@@ -1,0 +1,20 @@
+﻿using CakeShop.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+
+namespace CakeShop.Data
+{
+    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    {
+        // 👇 這邊的 DbContextOptions 裡面必須包著 <ApplicationDbContext>，如果漏掉或寫
+
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options)
+        {
+        }
+
+        public DbSet<Cake> Cakes { get; set; }
+        public DbSet<Order> Orders { get; set; }
+    }
+}
