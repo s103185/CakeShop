@@ -7,7 +7,10 @@
 
 @if (!Model.Any())
 {
-<div class="alert alert-info">您目前還沒有任何訂單喔！去<a asp-controller="Home" asp-action="Index">首頁</a>逛逛吧。</div>
+    <div class="alert alert-info">
+        您目前還沒有任何訂單喔！去
+        <a asp-controller="Home" asp-action="Index">首頁</a>逛逛吧。
+    </div>
 }
 else
 {
@@ -32,7 +35,11 @@ else
                         <td class="text-danger fw-bold">NT$ @order.TotalPrice</td>
                         <td>
                             @* 刪除訂單表單 *@
-                            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                            <form class="form-inline"
+                                  asp-area="Identity"
+                                  asp-page="/Account/Logout"
+                                  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                                
                                 <input type="hidden" name="id" value="@order.Id" />
                                 <button type="submit" class="btn btn-danger btn-sm">取消訂單</button>
                             </form>
